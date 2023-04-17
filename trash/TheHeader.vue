@@ -200,50 +200,43 @@
   </header>
 </template>
 
-<script lang="ts">
-import { Ref, ref, watch, defineComponent } from 'vue'
-
-export default defineComponent({
-  setup () {
-    const burgerHide: Ref<boolean> = ref(true) // Состояние самого бургера
-    const menuIsHide: Ref<boolean> = ref(true) // Состояние пункта бургер-меню
-    const burgerMenuIsHide: Ref<boolean> = ref(true) // Состояние пунктов бургер-меню
-    const activeBurgerList: Ref<number> = ref(0) // Текущий пункт бургер-меню
-
-    function burgerListShow ():void { // Показать списки под пуктами бургер-меню
-      burgerMenuIsHide.value = false
+<script>
+export default {
+  data () {
+    return {
+      burgerHide: true, // Состояние самого бургера
+      menuIsHide: true, // Состояние пункта бургер-меню
+      burgerMenuIsHide: true, // Состояние пунктов бургер-меню
+      activeBurgerList: 0 // Текущий пункт бургер-меню
     }
-    function burgerListHide ():void { // Скрыть подпункты бургер-меню
-      activeBurgerList.value = 0
-      burgerMenuIsHide.value = true
-    }
-    function burgerMenuShow ():void { // Показать сам бургер-меню
-      burgerHide.value = false
-    }
-    function burgerMenuHide ():void { // Скрыть сам бургер-меню
-      burgerHide.value = true
-      burgerListHide()
-    }
-    watch(burgerHide, ():void => {
-      if (!burgerHide.value) {
+  },
+  watch: {
+    burgerHide: function () {
+      // запрет на прокрутку, когда открыт бургер-меню
+      if (!this.burgerHide) {
         document.documentElement.style.overflow = 'hidden'
         return
       }
       document.documentElement.style.overflow = 'auto'
-    })
-
-    return {
-      burgerHide,
-      menuIsHide,
-      burgerMenuIsHide,
-      activeBurgerList,
-      burgerListShow,
-      burgerListHide,
-      burgerMenuShow,
-      burgerMenuHide
+    }
+  },
+  methods: {
+    burgerListShow () { // Показать списки под пуктами бургер-меню
+      this.burgerMenuIsHide = false
+    },
+    burgerListHide () { // Скрыть подпункты бургер-меню
+      this.activeBurgerList = 0
+      this.burgerMenuIsHide = true
+    },
+    burgerMenuShow () { // Показать сам бургер-меню
+      this.burgerHide = false
+    },
+    burgerMenuHide () { // Скрыть сам бургер-меню
+      this.burgerHide = true
+      this.burgerListHide()
     }
   }
-})
+}
 </script>
 
 <style lang="scss" scoped>

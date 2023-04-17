@@ -152,19 +152,22 @@
   </section>
 </template>
 
-<script>
-export default {
-  data () {
-    return {
-      activeType: 1
+<script lang="ts">
+import { defineComponent, ref, Ref } from 'vue'
+
+export default defineComponent({
+  setup () {
+    const activeType: Ref<number> = ref(1)
+
+    function selectActiveType (num: number):void {
+      activeType.value = num
     }
-  },
-  methods: {
-    selectActiveType (num) {
-      this.activeType = num
+    return {
+      activeType,
+      selectActiveType
     }
   }
-}
+})
 </script>
 
 <style lang="scss" scoped>
@@ -275,7 +278,6 @@ export default {
     }
   }
 }
-
 @media (max-width: 1024px) {
   .Tariffs__inner{
     padding: 100px 0;
@@ -284,7 +286,6 @@ export default {
     }
   }
 }
-
 @media (max-width: 768px) {
   .Tariffs__inner{
     .Tariffs__columns{

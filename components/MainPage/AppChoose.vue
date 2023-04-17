@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import { insertBitrix4 } from '@/assets/js/bitrx-window.js'
+import { insertBitrix4 } from '@/assets/js/bitrx-window'
 export default {
   mounted () {
     // Вставка popup от Bitrix на кнопку

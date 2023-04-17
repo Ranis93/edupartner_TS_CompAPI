@@ -49,7 +49,8 @@ export default {
   buildModules: [
     // https://go.nuxtjs.dev/eslint
     '@nuxtjs/eslint-module',
-    '@/modules/generator'
+    '@/modules/generator',
+    '@nuxt/typescript-build'
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
