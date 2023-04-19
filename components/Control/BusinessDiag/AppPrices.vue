@@ -121,88 +121,6 @@
             Заказать диагностику
           </div>
         </div>
-        <div class="Prices__subtitle">
-          Какой доход компании?
-        </div>
-        <div class="Prices__btngroup">
-          <button
-            class="Prices__btn"
-            :class="{'active-btn': incomeOfCompany === 1}"
-            @click="selectIncome(1)"
-          >
-            до 1 млн
-          </button>
-          <button
-            class="Prices__btn"
-            :class="{'active-btn': incomeOfCompany === 5}"
-            @click="selectIncome(5)"
-          >
-            От 1 до 5 млн
-          </button>
-          <button
-            class="Prices__btn"
-            :class="{'active-btn': incomeOfCompany === 10}"
-            @click="selectIncome(10)"
-          >
-            От 6 до 10 млн
-          </button>
-          <button
-            class="Prices__btn"
-            :class="{'active-btn': incomeOfCompany === 20}"
-            @click="selectIncome(20)"
-          >
-            От 10 до 20 млн
-          </button>
-        </div>
-        <div class="Scoreboard Scoreboard_two">
-          <div class="Scoreboard__cards">
-            <div class="Scoreboard__card">
-              <div class="Scoreboard__hat">
-                <div class="Scoreboard__img">
-                  <img src="../../../assets/images/control/business-diag/prices-cards/calcs.svg" alt="card-img">
-                </div>
-                <div class="Scoreboard__title">
-                  Диагностика управленческого учета
-                </div>
-              </div>
-              <div class="Scoreboard__desc">
-                Анализ текущей ситуации, определение необходимых отчетов, определение и анализ ключевых показателей, автоматизация учета, рекомендации по результатам диагностики
-              </div>
-              <div class="Scoreboard__prices">
-                <div class="Scoreboard__new-price">
-                  {{ parseInt(filteredPricesByIncome.managm.newPrice).toLocaleString("ru-RU") }} ₽
-                </div>
-                <div class="Scoreboard__old-price">
-                  {{ parseInt(filteredPricesByIncome.managm.oldPrice).toLocaleString("ru-RU") }} ₽
-                </div>
-              </div>
-            </div>
-            <div class="Scoreboard__card">
-              <div class="Scoreboard__hat">
-                <div class="Scoreboard__img">
-                  <img src="../../../assets/images/control/business-diag/prices-cards/money.svg" alt="card-img">
-                </div>
-                <div class="Scoreboard__title">
-                  Финансовая диагностика
-                </div>
-              </div>
-              <div class="Scoreboard__desc">
-                Глубокое исследование финансовых отношений и движения финансовых ресурсов. Анализ прошлого, текущего финансового положения, прогноз относительно будущих условий и деятельности предприятия.
-              </div>
-              <div class="Scoreboard__prices">
-                <div class="Scoreboard__new-price">
-                  {{ parseInt(filteredPricesByIncome.financial.newPrice).toLocaleString("ru-RU") }} ₽
-                </div>
-                <div class="Scoreboard__old-price">
-                  {{ parseInt(filteredPricesByIncome.financial.oldPrice).toLocaleString("ru-RU") }} ₽
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="Scoreboard__order-btn">
-            Заказать диагностику
-          </div>
-        </div>
       </div>
     </div>
   </section>
@@ -214,7 +132,6 @@ export default {
   data () {
     return {
       numberOfPeople: 5,
-      incomeOfCompany: 1,
       filteredPricesByNumber: {
         full: {
           oldPrice: 100000,
@@ -227,16 +144,6 @@ export default {
         it: {
           oldPrice: 89000,
           newPrice: 70000
-        }
-      },
-      filteredPricesByIncome: {
-        managm: {
-          oldPrice: 120000,
-          newPrice: 100000
-        },
-        financial: {
-          oldPrice: 90000,
-          newPrice: 79000
         }
       },
       allPrices1: [
@@ -330,64 +237,6 @@ export default {
             }
           }
         }
-      ],
-      allPrices2: [
-        {
-          id: 1,
-          incomeOfCompany: 1,
-          about: {
-            managm: {
-              oldPrice: 120000,
-              newPrice: 100000
-            },
-            financial: {
-              oldPrice: 90000,
-              newPrice: 79000
-            }
-          }
-        },
-        {
-          id: 2,
-          incomeOfCompany: 5,
-          about: {
-            managm: {
-              oldPrice: 230000,
-              newPrice: 210000
-            },
-            financial: {
-              oldPrice: 161000,
-              newPrice: 150000
-            }
-          }
-        },
-        {
-          id: 3,
-          incomeOfCompany: 10,
-          about: {
-            managm: {
-              oldPrice: 370000,
-              newPrice: 350000
-            },
-            financial: {
-              oldPrice: 311000,
-              newPrice: 300000
-            }
-          }
-        },
-        {
-          id: 4,
-          incomeOfCompany: 20,
-          about: {
-            managm: {
-              oldPrice: 520000,
-              newPrice: 500000
-            },
-            financial: {
-              oldPrice: 411000,
-              newPrice: 400000
-            }
-          }
-        }
       ]
     }
   },
@@ -395,20 +244,12 @@ export default {
     try {
       insertBitrix5('.Scoreboard_one', '.Scoreboard__order-btn')
     } catch (error) {}
-    try {
-      insertBitrix5('.Scoreboard_two', '.Scoreboard__order-btn')
-    } catch (error) {}
   },
   methods: {
     selectPeople (num) {
       this.numberOfPeople = num
       const filtered = this.allPrices1.filter(price => num === price.numberOfPeople)
       this.filteredPricesByNumber = filtered[0].about
-    },
-    selectIncome (num) {
-      this.incomeOfCompany = num
-      const filtered = this.allPrices2.filter(price => num === price.incomeOfCompany)
-      this.filteredPricesByIncome = filtered[0].about
     }
   }
 }
