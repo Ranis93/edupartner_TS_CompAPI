@@ -16,13 +16,13 @@
               </div>
             </div>
           </nuxt-link>
-          <a href="#!">
+          <nuxt-link to="/site-development/corporate-website">
             <div class="ServiceLines__card coorp">
               <div class="ServiceLines__text">
                 Корпоративный сайт
               </div>
             </div>
-          </a>
+          </nuxt-link>
           <a href="#!">
             <div class="ServiceLines__card internet">
               <div class="ServiceLines__text">
