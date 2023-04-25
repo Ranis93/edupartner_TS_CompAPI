@@ -35,7 +35,7 @@ export default {
   mounted () {
     this.$store.commit('bredcrumbs/changeAmountBredcrumbs', { value: 2 })
     this.$store.commit('bredcrumbs/changeBredcrumbs', {
-      values: ['Разработка сайта', 'Landing page'],
+      values: ['Разработка сайтов', 'Landing page'],
       paths: ['/site-development', '/site-development/landing-page']
     })
   }

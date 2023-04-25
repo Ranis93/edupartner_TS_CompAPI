@@ -14,35 +14,35 @@
             :class="{'active-btn': numberOfPeople === 5}"
             @click="selectPeople(5)"
           >
-            От 1 до 5
+            до 5
           </button>
           <button
             class="Prices__btn"
             :class="{'active-btn': numberOfPeople === 8}"
             @click="selectPeople(8)"
           >
-            От 6 до 8
+            От 6 до 10
           </button>
           <button
             class="Prices__btn"
             :class="{'active-btn': numberOfPeople === 11}"
             @click="selectPeople(11)"
           >
-            От 9 до 11
+            От 11 до 15
           </button>
           <button
             class="Prices__btn"
             :class="{'active-btn': numberOfPeople === 20}"
             @click="selectPeople(20)"
           >
-            От 12 до 20
+            От 16 до 20
           </button>
           <button
             class="Prices__btn"
             :class="{'active-btn': numberOfPeople === 30}"
             @click="selectPeople(30)"
           >
-            От 21 до 30
+            От 21 и более
           </button>
         </div>
         <div class="Scoreboard Scoreboard_one">
@@ -71,51 +71,9 @@
                 </div>
               </div>
             </div>
-            <div class="Scoreboard__card">
-              <div class="Scoreboard__hat">
-                <div class="Scoreboard__img">
-                  <img src="../../../assets/images/control/business-diag/prices-cards/society.svg" alt="card-img">
-                </div>
-                <div class="Scoreboard__title">
-                  Кадровая диагностика
-                </div>
-              </div>
-              <div class="Scoreboard__desc">
-                Оценка соответствия кадрового потенциала целям и стратегиям организации. Анализ резюме, собеседование каждого сотрудника, рекомендации по результатам проведения диагностики
-              </div>
-              <div class="Scoreboard__prices">
-                <div class="Scoreboard__new-price">
-                  {{ parseInt(filteredPricesByNumber.personnel.newPrice).toLocaleString("ru-RU") }} ₽
-                </div>
-                <div class="Scoreboard__old-price">
-                  {{ parseInt(filteredPricesByNumber.personnel.oldPrice).toLocaleString("ru-RU") }} ₽
-                </div>
-              </div>
-            </div>
-            <div
-              v-if="filteredPricesByNumber.it.newPrice"
-              class="Scoreboard__card"
-            >
-              <div class="Scoreboard__hat">
-                <div class="Scoreboard__img">
-                  <img src="../../../assets/images/control/business-diag/prices-cards/mac.svg" alt="card-img">
-                </div>
-                <div class="Scoreboard__title">
-                  IT-диагностика
-                </div>
-              </div>
-              <div class="Scoreboard__desc">
-                Определение скорости работы, индексируемости, совместимости с различными браузерами и платформами. Оценка адаптивности сайта
-              </div>
-              <div class="Scoreboard__prices">
-                <div class="Scoreboard__new-price">
-                  {{ parseInt(filteredPricesByNumber.it.newPrice).toLocaleString("ru-RU") }} ₽
-                </div>
-                <div class="Scoreboard__old-price">
-                  {{ parseInt(filteredPricesByNumber.it.oldPrice).toLocaleString("ru-RU") }} ₽
-                </div>
-              </div>
-            </div>
+          </div>
+          <div class="Scoreboard__ps">
+            *Стоимость указана по городу Уфа. Цены на диагностику для компаний по другим городам уточняйте у менеджеров. Возможен выезд по регионам России.
           </div>
           <div class="Scoreboard__order-btn">
             Заказать диагностику
@@ -134,8 +92,8 @@ export default {
       numberOfPeople: 5,
       filteredPricesByNumber: {
         full: {
-          oldPrice: 100000,
-          newPrice: 85000
+          oldPrice: 120000,
+          newPrice: 105000
         },
         personnel: {
           oldPrice: 90000,
@@ -152,8 +110,8 @@ export default {
           numberOfPeople: 5,
           about: {
             full: {
-              oldPrice: 100000,
-              newPrice: 85000
+              oldPrice: 120000,
+              newPrice: 105000
             },
             personnel: {
               oldPrice: 90000,
@@ -170,8 +128,8 @@ export default {
           numberOfPeople: 8,
           about: {
             full: {
-              oldPrice: 155000,
-              newPrice: 140000
+              oldPrice: 210000,
+              newPrice: 195000
             },
             personnel: {
               oldPrice: 131000,
@@ -188,8 +146,8 @@ export default {
           numberOfPeople: 11,
           about: {
             full: {
-              oldPrice: 195000,
-              newPrice: 180000
+              oldPrice: 320000,
+              newPrice: 305000
             },
             personnel: {
               oldPrice: 171000,
@@ -206,8 +164,8 @@ export default {
           numberOfPeople: 20,
           about: {
             full: {
-              oldPrice: 325000,
-              newPrice: 310000
+              oldPrice: 410000,
+              newPrice: 395000
             },
             personnel: {
               oldPrice: 291000,
@@ -224,8 +182,8 @@ export default {
           numberOfPeople: 30,
           about: {
             full: {
-              oldPrice: 455000,
-              newPrice: 440000
+              oldPrice: 465000,
+              newPrice: 450000
             },
             personnel: {
               oldPrice: 406000,
@@ -399,6 +357,15 @@ export default {
         }
       }
     }
+    .Scoreboard__ps{
+      font-family: $ff1;
+      font-style: italic;
+      font-weight: 500;
+      font-size: 20px;
+      line-height: 25px;
+      color: #C4C4C4;
+      margin-top: 20px;
+    }
     .Scoreboard__order-btn{
       margin-top: 30px;
       padding: 10px 40px;
@@ -436,6 +403,9 @@ export default {
             font-size: 18px;
           }
         }
+      }
+      .Scoreboard__ps{
+        font-size: 18px;
       }
     }
   }
